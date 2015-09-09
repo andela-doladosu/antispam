@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Antispam;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -36,4 +36,21 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function posts() {
+        return $this->hasMany('Antispam\Post');
+    }
+
+    public function comments() {
+        return $this->hasMany('Antispam\Comment');
+    }
+
+    public function messages() {
+        return $this->hasMany('Antispam\Message');
+    }
+
+    public function notifications() {
+        return $this->hasMany('Antispam\Notification');
+    }
+
 }
